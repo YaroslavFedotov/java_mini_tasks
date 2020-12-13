@@ -1,0 +1,43 @@
+import java.util.*;
+public class Bowling {
+    HashMap<String, Integer> players;
+    Bowling() {
+        players = new HashMap<String, Integer>();
+    }
+    public void addPlayer(String name, int p) {
+        players.put(name, p);
+    }
+    public String getWinner() {
+        Set<String> playersNames = players.keySet();
+        Iterator<String> it = playersNames.iterator();
+        String winner = "";
+        String correntPlayr = "";
+        int counter = 0;
+        int corrent = 0;
+        while (it.hasNext()) {
+            correntPlayr = it.next();
+            corrent = players.get(correntPlayr);
+            if (corrent > counter)
+            {
+                counter = corrent;
+                winner = correntPlayr;
+            }
+        }
+        System.out.println(winner);
+        return winner;
+    }
+}
+public class Program {
+    public static void main(String[ ] args) {
+        Bowling game = new Bowling();
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < 3; i++) {
+            String input = sc.nextLine();
+            String[] values = input.split(" ");
+            String name = values[0];
+            int points = Integer.parseInt(values[1]);
+            game.addPlayer(name, points);
+        }
+        game.getWinner();
+    }
+}
