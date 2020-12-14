@@ -1,0 +1,17 @@
+import java.util.Arrays;
+public class TwoToOne {
+    
+    public static String longest (String s1, String s2) {
+      String resultStr = "";
+      String SumStr = s1 + s2;
+      for (int i = 0; i < SumStr.length(); i++) {
+        if (!(resultStr.contains(Character.toString(SumStr.charAt(i))))) {
+          resultStr += SumStr.charAt(i);
+        }
+      }
+      char[] divider = resultStr.toCharArray();
+      Arrays.sort(divider);
+      resultStr = new String(divider);
+      return resultStr;
+    }
+}
