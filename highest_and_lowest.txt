@@ -1,0 +1,13 @@
+public class Kata {
+  public static String highAndLow(String numbers) {
+    String[] subStr;
+    subStr = numbers.split(" ");
+    String max = subStr[0];
+    String min = subStr[0];
+    for (int i = 1; i < subStr.length; i++) {
+      max = (Integer.parseInt(subStr[i]) >= Integer.parseInt(max)) ? subStr[i] : max;
+      min = (Integer.parseInt(subStr[i]) <= Integer.parseInt(min)) ? subStr[i] : min;
+    }
+    return (max + " " + min);
+  }
+}
