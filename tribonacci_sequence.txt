@@ -1,0 +1,24 @@
+public class Xbonacci {
+  public double[] tribonacci(double[] s, int n) {
+    double[] resultArr;
+    if (n == 0) {
+      resultArr = new double[0];
+    } 
+    else {
+      if (n < 4) {
+         resultArr = new double[n];
+        for (int i = 0; i < n; i++) {
+          resultArr[i] = s[i];
+        }
+      }
+      else {
+          resultArr = new double[n];
+          System.arraycopy(s, 0, resultArr, 0, s.length);
+          for (int i = 0; i < n - 3; i++) {
+            resultArr[i + 3] = resultArr[i] + resultArr[i + 1] + resultArr[i + 2];
+        }
+      }
+    } 
+    return resultArr;
+  }
+}
