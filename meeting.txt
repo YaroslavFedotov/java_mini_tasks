@@ -1,0 +1,21 @@
+class Meeting {
+    public static String meeting(String s) {
+        String[] friends = s.split(";");
+        Arrays.sort(friends, (surname1, surname2) -> {
+            var result = CharSequence.compare(surname1.split(":")[1],
+                                              surname2.split(":")[1]);
+            if (result == 0){
+                return CharSequence.compare(surname1.split(":")[0],
+                                            surname2.split(":")[0]);
+            }
+            else {
+                return result;
+            }
+        });
+        var result = new StringBuilder(s.length());
+        for (String friend : friends) {
+            result.append(String.format("(%s, %s)", friend.split(":")[1].toUpperCase(),
+                                                    friend.split(":")[0].toUpperCase()));
+        }
+        return result.toString();
+    }
