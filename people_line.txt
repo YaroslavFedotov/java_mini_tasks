@@ -1,12 +1,14 @@
 import java.util.*;
 
 public class Line {
-   public static String WhoIsNext(String[] names, int n)
-     {
+    public static String WhoIsNext(String[] names, int n) {
         var customer = "";
-        ArrayList<String> people = ArrayList(Collection <? extends E> names);
-        people.get(0)
-        return names[0];
-     }
-   
+        var people = new ArrayDeque<>(Arrays.asList(names));
+        for (int i = 1; i < n; i++) {
+            customer = people.poll();
+            people.add(customer);
+            people.add(customer);
+        }
+        return people.peek();
+    }
 }
