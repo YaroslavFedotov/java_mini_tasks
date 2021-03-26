@@ -1,0 +1,19 @@
+public static <T> List<T> josephusPermutation(final List<T> items, final int k) {
+    List<T> result = new LinkedList();
+    int remainder = 0, counter = 0;
+    while (items.size() != 0) {
+        for (int i = remainder; i < items.size(); i++) {
+            if (counter + 1 == k) {
+                result.add(items.get(i));
+                items.remove(i);
+                counter = 0;
+            }
+            if (i == items.size()) {
+                remainder = counter;
+                break;
+            }
+            counter++;
+        }
+    }
+    return result;
+}
