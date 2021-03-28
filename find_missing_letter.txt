@@ -1,0 +1,10 @@
+public static char findMissingLetter(char[] array) {
+    int oldChar = (int)array[0];
+    for (int i = 1; i < array.length; i++) {
+        if ((int)array[i] - 1 != oldChar) {
+            return (char)(oldChar + 1);
+        }
+        oldChar = (int)array[i];
+    }
+    return ' ';
+}
