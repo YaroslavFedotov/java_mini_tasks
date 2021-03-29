@@ -1,0 +1,20 @@
+public static String longToIP(long ip) {
+    StringBuilder binaryRepresentation = new StringBuilder(Long.toBinaryString(ip)),
+        resalt = new StringBuilder(),
+        buffer = new StringBuilder();
+    int length = binaryRepresentation.length();
+    for (int i = 0; i < 32 - length; i++) {
+        binaryRepresentation.insert(0, '0');
+    }
+    for (int i = 0, j = 0; i <= 32; i++, j++) {
+        if (j == 8) {
+            resalt.append("." + Integer.parseInt(buffer.toString(),2));
+            buffer = new StringBuilder();
+            j = 0;
+        }
+        if (i < 32) {
+            buffer.append(binaryRepresentation.charAt(i));
+        }
+    }
+    return resalt.deleteCharAt(0).toString();
+}
