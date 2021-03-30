@@ -2,22 +2,23 @@ public static boolean isMerge(String s, String part1, String part2) {
     s.toUpperCase();
     part1.toUpperCase();
     part2.toUpperCase();
-    int check = 0;
+    int lengthCheck = 0, duplicateCheck = 0;
     for (int i = 0, x = 0, y = 0; i < s.length(); i++) {
         if (x < part1.length()) {
             if (part1.charAt(x) == s.charAt(i)) {
-                check++;
+			    duplicateCheck++;
+                lengthCheck++;
                 x++;
             }
         }
-        if (y < part2.length()) {
+        if (y < part2.length() && duplicateCheck-- != 1) {
             if (part2.charAt(y) == s.charAt(i)) {
-                check++;
+                lengthCheck++;
                 y++;
             }
         }
     }
-    if (check == (part1.length() + part2.length()) && check == s.length()) {
+    if (lengthCheck == (part1.length() + part2.length()) && lengthCheck == s.length()) {
         return true;
     }
     return false;
